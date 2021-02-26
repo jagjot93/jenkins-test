@@ -1,0 +1,46 @@
+1. Manage plugins --> available -- terraform
+
+2. Global tool configuration -- terraform till /usr/local/bin/
+
+3. Install git on server
+
+
+pipeline{
+agent any
+tools {
+terraform 'terraform'
+}
+stages{
+stage ("Git checkout"){
+steps {
+echo "Checkout source code repository"
+git branch: 'main', credentialsId: 'c7ff2f44-4de3-44c5-bf36-15ddef69105f', url: 'https://github.com/jagjot93/jenkins-test.git'
+}
+
+ }
+stage ("terraform init"){
+steps {
+echo "Intializing terraform"
+sh 'terraform init'
+}
+}
+
+stage ("terraform plan"){
+steps {
+echo "Planning terraform"
+sh 'terraform plan'
+}
+}
+
+stage ("terraform apply"){
+steps {
+echo "Apply terraform"
+sh 'terraform apply --auto-approve'
+}
+}
+}
+}
+
+
+
+git branch: 'main', credentialsId: 'c7ff2f44-4de3-44c5-bf36-15ddef69105f', poll: false, url: 'https://github.com/jagjot93/s3-code.git'
