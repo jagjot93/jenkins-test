@@ -1,9 +1,17 @@
-1. Manage plugins --> available -- terraform
+STEPS:
 
-2. Global tool configuration -- terraform till /usr/local/bin/
+1. Download terraform on the jenkins server
 
-3. Install git on server
+2. Manage plugins --> available -- terraform
 
+3. Global tool configuration -- terraform till /usr/local/bin/
+
+4. Install git on server
+
+5. Global tool configuration - git (only mention git)
+
+
+PIPELINE:
 
 pipeline{
 agent any
@@ -42,5 +50,5 @@ sh 'terraform apply --auto-approve'
 }
 
 
-
+This part can be generated from Snippet Generator (make sure to mention the username and not email ID for github)
 git branch: 'main', credentialsId: 'c7ff2f44-4de3-44c5-bf36-15ddef69105f', poll: false, url: 'https://github.com/jagjot93/s3-code.git'
