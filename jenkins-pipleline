@@ -10,6 +10,8 @@ STEPS:
 
 5. Global tool configuration - git (only mention git)
 
+6. Attach the IAM role mentioned in 'main.tf' to the jenkins node
+
 
 PIPELINE:
 
